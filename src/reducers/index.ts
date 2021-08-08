@@ -3,7 +3,7 @@ import todoReducer from "./todoReducer/todoReducer";
 
 const rootReducer = combineReducers(
     {
-        todo: todoReducer,
+        todoReducer: todoReducer,
     }
 )
 

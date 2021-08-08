@@ -2,17 +2,13 @@ export interface Todo {
     id: string,
     title: string,
     isChecked: boolean,
+    details?: string,
 }
 
 export interface TodoState {
     todos: Todo[],
-    username: string,
 }
 
-interface Action {
-    type: any,
-    payload: any
-}
 
 interface TodoLoadAction {
     type: TodosTypeEnum.LOAD,

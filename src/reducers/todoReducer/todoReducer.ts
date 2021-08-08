@@ -1,30 +1,34 @@
 import {TodoAction, TodoState, TodosTypeEnum} from "../../types/todo";
 
-const initialState = {
-    todos: [],
-    username: '',
+const initialState: TodoState = {
+    todos: [{title: "test", details: "hello world", isChecked: true, id: "#ds314"}, {title: "test2", details: "hello world2", isChecked: true, id: "#ds315"}],
 }
 
-function todoReducer(state: TodoState = initialState, action: TodoAction) {
+function todoReducer(state: TodoState = initialState, action: TodoAction): TodoState {
     switch (action.type) {
         case TodosTypeEnum.LOAD: {
-            break;
+            return {...state, todos: action.payload}
         }
         case TodosTypeEnum.SET: {
-            break;
+            return {...state, todos: action.payload}
         }
         case TodosTypeEnum.ADD: {
-            break;
+            return {...state, todos: [...state.todos, action.payload]}
         }
         case TodosTypeEnum.REMOVE: {
-            break;
+            return {...state, todos: state.todos.filter(todo => todo.id !== action.payload)}
         }
         case TodosTypeEnum.TOGGLE_DONE: {
-            break;
+            console.log(action)
+            const array = [...state.todos]
+            const toggledItemIndex = array.findIndex(todo => todo.id === action.payload)
+            if (toggledItemIndex !== -1)
+                array.splice(toggledItemIndex, 1, {...array[toggledItemIndex], isChecked: !array[toggledItemIndex].isChecked})
+            return {...state, todos: array}
         }
 
         default: {
-            throw new Error("Incorrect Action Type!")
+            return state
         }
     }
 
