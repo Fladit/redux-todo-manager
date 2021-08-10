@@ -1,7 +1,7 @@
 import {TodoAction, TodoState, TodosTypeEnum} from "../../types/todo";
 
 const initialState: TodoState = {
-    todos: [{title: "test", details: "hello world", isChecked: true, id: "#ds314"}, {title: "test2", details: "hello world2", isChecked: true, id: "#ds315"}],
+    todos: [],
 }
 
 function todoReducer(state: TodoState = initialState, action: TodoAction): TodoState {

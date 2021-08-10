@@ -1,17 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./App.css"
 import TodosList from "./components/TodoList/TodosList";
-import {Provider} from "react-redux";
-import store from "./store";
+import {useDispatch} from "react-redux";
+import {fetchTodos} from "./action-creators/todo";
 
 function App() {
-  return (
-      <Provider store={store}>
-          <div className={"app"}>
-              <TodosList/>
-          </div>
-      </Provider>
-  );
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchTodos())
+    }, [])
+
+    return (
+        <div className={"app"}>
+            <TodosList/>
+        </div>
+    );
 }
 
 export default App;
