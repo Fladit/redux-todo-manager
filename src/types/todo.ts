@@ -1,3 +1,5 @@
+import {TodoItemFromForm} from "../components/TodoItemForm/TodoItemForm";
+
 export interface Todo {
     id: string,
     title: string,
@@ -7,10 +9,11 @@ export interface Todo {
 
 export interface TodoState {
     todos: Todo[],
+    nextTodoId: string
 }
 
 
-interface TodoLoadAction {
+export interface TodoLoadAction {
     type: TodosTypeEnum.LOAD,
     payload: Todo[]
 }
@@ -20,17 +23,17 @@ interface TodoSetAction {
     payload: Todo[]
 }
 
-interface TodoAddAction {
+export interface TodoAddAction {
     type: TodosTypeEnum.ADD,
-    payload: Todo
+    payload: TodoItemFromForm
 }
 
-interface TodoRemoveAction {
+export interface TodoRemoveAction {
     type: TodosTypeEnum.REMOVE,
     payload: Todo['id']
 }
 
-interface TodoToggleDoneAction {
+export interface TodoToggleDoneAction {
     type: TodosTypeEnum.TOGGLE_DONE,
     payload: Todo['id']
 }

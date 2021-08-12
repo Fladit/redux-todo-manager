@@ -1,6 +1,7 @@
 import axios from "axios";
-import {Todo, TodoAction, TodosTypeEnum} from "../types/todo";
+import {Todo, TodoAction, TodoAddAction, TodoRemoveAction, TodosTypeEnum, TodoToggleDoneAction} from "../types/todo";
 import {Dispatch} from "redux";
+import {TodoItemFromForm} from "../components/TodoItemForm/TodoItemForm";
 
 function fetchTodos(limit: number = 10) {
     return async function(dispatch: Dispatch<TodoAction>) {
@@ -15,12 +16,16 @@ function fetchTodos(limit: number = 10) {
     }
 }
 
-export function removeTodo(id: Todo['id']): TodoAction {
+export function removeTodo(id: Todo['id']): TodoRemoveAction {
     return {type: TodosTypeEnum.REMOVE, payload: id}
 }
 
-export function toggleDoneTodo(id: Todo['id']): TodoAction {
+export function toggleDoneTodo(id: Todo['id']): TodoToggleDoneAction {
     return {type: TodosTypeEnum.TOGGLE_DONE, payload: id}
+}
+
+export function addTodo(todo: TodoItemFromForm): TodoAddAction {
+    return {type: TodosTypeEnum.ADD, payload: todo}
 }
 
 export {fetchTodos}
