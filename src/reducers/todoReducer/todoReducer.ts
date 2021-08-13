@@ -2,22 +2,20 @@ import {TodoAction, TodoState, TodosTypeEnum} from "../../types/todo";
 
 const initialState: TodoState = {
     todos: [],
-    get nextTodoId(): string {
-        return (this.todos.length + 1).toString()
-    }
+    nextTodoId: 1,
 }
 
 function todoReducer(state: TodoState = initialState, action: TodoAction): TodoState {
     switch (action.type) {
         case TodosTypeEnum.LOAD: {
-            return {...state, todos: action.payload}
+            return {...state, todos: action.payload, nextTodoId: (action.payload.length + 1)}
         }
         case TodosTypeEnum.SET: {
             return {...state, todos: action.payload}
         }
         case TodosTypeEnum.ADD: {
             console.log(state === initialState)
-            return {...state, todos: [...state.todos, {...action.payload, id: state.nextTodoId, isChecked: false}]}
+            return {...state, todos: [...state.todos, {...action.payload, id: state.nextTodoId.toString(), isChecked: false}], nextTodoId: (state.nextTodoId + 1)}
         }
         case TodosTypeEnum.REMOVE: {
             return {...state, todos: state.todos.filter(todo => todo.id !== action.payload)}

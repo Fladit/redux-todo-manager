@@ -12,6 +12,8 @@ const TodoItemForm = () => {
         e.preventDefault()
         if (title.value) {
             dispatch(addTodo({title: title.value, details: details.value}))
+            title.reset()
+            details.reset()
         }
     }
     return (

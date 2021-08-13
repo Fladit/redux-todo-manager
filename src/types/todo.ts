@@ -9,7 +9,7 @@ export interface Todo {
 
 export interface TodoState {
     todos: Todo[],
-    nextTodoId: string
+    nextTodoId: number
 }
 
 
