@@ -14,7 +14,6 @@ function todoReducer(state: TodoState = initialState, action: TodoAction): TodoS
             return {...state, todos: action.payload}
         }
         case TodosTypeEnum.ADD: {
-            console.log(state === initialState)
             return {...state, todos: [...state.todos, {...action.payload, id: state.nextTodoId.toString(), isChecked: false}], nextTodoId: (state.nextTodoId + 1)}
         }
         case TodosTypeEnum.REMOVE: {
