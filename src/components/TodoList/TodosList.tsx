@@ -5,7 +5,7 @@ import TodoItem from "../Todo/TodoItem";
 const TodosList = () => {
     const todos = useAppSelector(state => state.todoReducer.todos)
     return (
-        <div>
+        <div style={{marginTop: '20px'}}>
             {todos.map(todo => <TodoItem todo={todo} key={todo.id}/>)}
         </div>
     );

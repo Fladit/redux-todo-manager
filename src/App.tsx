@@ -4,6 +4,7 @@ import TodosList from "./components/TodoList/TodosList";
 import {useDispatch} from "react-redux";
 import {fetchTodos} from "./action-creators/todo";
 import TodoItemForm from "./components/TodoItemForm/TodoItemForm";
+import {Container, Typography} from "@material-ui/core";
 
 function App() {
     const dispatch = useDispatch()
@@ -13,10 +14,17 @@ function App() {
     }, [])
 
     return (
-        <div className={"app"}>
-            <TodoItemForm/>
-            <TodosList/>
-        </div>
+        <Container maxWidth={'sm'}>
+            <header>
+                <Typography variant="h2" component="h1" align={'center'} gutterBottom>
+                    Todo List
+                </Typography>
+            </header>
+            <main>
+                <TodoItemForm/>
+                <TodosList/>
+            </main>
+        </Container>
     );
 }
 
