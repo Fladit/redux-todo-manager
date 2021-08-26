@@ -52,8 +52,8 @@ const TodoItem = ({todo}: TodoItemProps) => {
                     }/>
                 }
                 action={
-                    <IconButton onClick={() => dispatch(removeTodo(todo.id))} className={classes.noRightPaddingButton}>
-                        <DeleteIcon/>
+                    <IconButton onClick={() => dispatch(removeTodo(todo.id))}>
+                        <DeleteIcon />
                     </IconButton>
                 }
             />
